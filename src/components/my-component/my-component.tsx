@@ -27,6 +27,6 @@ export class MyComponent {
   }
 
   render() {
-    return <div>My Name is: {this.getText()}</div>;
+    return <div>The provided name was: {this.getText()}</div>;
   }
 }

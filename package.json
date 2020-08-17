@@ -31,7 +31,6 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.11.1",
-    "@stencil/webpack": "0.0.6",
     "@storybook/addon-actions": "^6.0.10",
     "@storybook/addon-essentials": "^6.0.10",
     "@storybook/addon-links": "^6.0.10",
