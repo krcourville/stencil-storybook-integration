@@ -1,12 +1,13 @@
 import { Component, Prop, h } from "@stencil/core";
-import { format } from "../../utils/utils";
+import UserTunnel, { UserState } from "../data/user";
+import ConvertersTunnel, { UserNameFormatter } from "../data/converters";
 
 @Component({
   tag: "my-component",
   styleUrl: "my-component.css",
-  shadow: true,
+  scoped: true,
 })
-export class MyComponent {
+export class MyComponent implements UserState {
   /**
    * The first name
    */
@@ -22,11 +23,13 @@ export class MyComponent {
    */
   @Prop() last: string;
 
-  private getText(): string {
-    return format(this.first, this.middle, this.last);
-  }
+  @Prop() userName: UserNameFormatter;
 
   render() {
-    return <div>The provided name was: {this.getText()}</div>;
+    const formattedUserName = this.userName(this.first, this.middle, this.last);
+    return <div>The provided name was: {formattedUserName}</div>;
   }
 }
+
+UserTunnel.injectProps(MyComponent, ["first", "middle", "last"]);
+ConvertersTunnel.injectProps(MyComponent, ["userName"]);

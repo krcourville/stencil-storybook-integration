@@ -31,6 +31,7 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.11.1",
+    "@stencil/state-tunnel": "^1.0.1",
     "@storybook/addon-actions": "^6.0.10",
     "@storybook/addon-essentials": "^6.0.10",
     "@storybook/addon-links": "^6.0.10",

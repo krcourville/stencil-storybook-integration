@@ -5,7 +5,13 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { UserNameFormatter } from "./components/data/converters";
 export namespace Components {
+    interface AppRoot {
+    }
+    interface MyChildComponent {
+        "childNames"?: string[];
+    }
     interface MyComponent {
         /**
           * The first name
@@ -19,20 +25,49 @@ export namespace Components {
           * The middle name
          */
         "middle": string;
+        "userName": UserNameFormatter;
+    }
+    interface MyParentComponent {
     }
 }
 declare global {
+    interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
+    }
+    var HTMLAppRootElement: {
+        prototype: HTMLAppRootElement;
+        new (): HTMLAppRootElement;
+    };
+    interface HTMLMyChildComponentElement extends Components.MyChildComponent, HTMLStencilElement {
+    }
+    var HTMLMyChildComponentElement: {
+        prototype: HTMLMyChildComponentElement;
+        new (): HTMLMyChildComponentElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLMyParentComponentElement extends Components.MyParentComponent, HTMLStencilElement {
+    }
+    var HTMLMyParentComponentElement: {
+        prototype: HTMLMyParentComponentElement;
+        new (): HTMLMyParentComponentElement;
+    };
     interface HTMLElementTagNameMap {
+        "app-root": HTMLAppRootElement;
+        "my-child-component": HTMLMyChildComponentElement;
         "my-component": HTMLMyComponentElement;
+        "my-parent-component": HTMLMyParentComponentElement;
     }
 }
 declare namespace LocalJSX {
+    interface AppRoot {
+    }
+    interface MyChildComponent {
+        "childNames"?: string[];
+    }
     interface MyComponent {
         /**
           * The first name
@@ -46,16 +81,25 @@ declare namespace LocalJSX {
           * The middle name
          */
         "middle"?: string;
+        "userName"?: UserNameFormatter;
+    }
+    interface MyParentComponent {
     }
     interface IntrinsicElements {
+        "app-root": AppRoot;
+        "my-child-component": MyChildComponent;
         "my-component": MyComponent;
+        "my-parent-component": MyParentComponent;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "my-child-component": LocalJSX.MyChildComponent & JSXBase.HTMLAttributes<HTMLMyChildComponentElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "my-parent-component": LocalJSX.MyParentComponent & JSXBase.HTMLAttributes<HTMLMyParentComponentElement>;
         }
     }
 }
