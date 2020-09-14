@@ -1,0 +1,29 @@
+
+
+# EditorConfig is awesome: https://EditorConfig.org
+
+# Establishing an .editconfig saves developers from having
+# to manually setup up workspace settings to match the expectations
+# of the project.  And it works automatically in many ides and editors.
+# Others require an plugin. VSCode is one of them:
+#  https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
+#
+# For others, refer to: https://editorconfig.org/
+#
+# NOTE: this .editorconfig was copy/pasted from the stenciljs project:
+#   https://github.com/ionic-team/stencil/blob/master/.editorconfig
+
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.md]
+insert_final_newline = false
+trim_trailing_whitespace = false

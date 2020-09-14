@@ -77,3 +77,4 @@ The first step for all three of these strategies is to [publish to NPM](https://
 ## References
 
 - [Loading Stencil components with Storybook](https://andreaswissel.com/integrating-stencil-with-storybook)
+- [State Management with State Tunnel in StencilJS](https://www.joshmorony.com/state-management-with-state-tunnel-in-stencil-js/)

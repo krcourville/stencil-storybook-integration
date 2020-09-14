@@ -27,6 +27,8 @@ export namespace Components {
         "middle": string;
         "userName": UserNameFormatter;
     }
+    interface MyForm {
+    }
     interface MyParentComponent {
     }
 }
@@ -49,6 +51,12 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLMyFormElement extends Components.MyForm, HTMLStencilElement {
+    }
+    var HTMLMyFormElement: {
+        prototype: HTMLMyFormElement;
+        new (): HTMLMyFormElement;
+    };
     interface HTMLMyParentComponentElement extends Components.MyParentComponent, HTMLStencilElement {
     }
     var HTMLMyParentComponentElement: {
@@ -59,6 +67,7 @@ declare global {
         "app-root": HTMLAppRootElement;
         "my-child-component": HTMLMyChildComponentElement;
         "my-component": HTMLMyComponentElement;
+        "my-form": HTMLMyFormElement;
         "my-parent-component": HTMLMyParentComponentElement;
     }
 }
@@ -83,12 +92,15 @@ declare namespace LocalJSX {
         "middle"?: string;
         "userName"?: UserNameFormatter;
     }
+    interface MyForm {
+    }
     interface MyParentComponent {
     }
     interface IntrinsicElements {
         "app-root": AppRoot;
         "my-child-component": MyChildComponent;
         "my-component": MyComponent;
+        "my-form": MyForm;
         "my-parent-component": MyParentComponent;
     }
 }
@@ -99,6 +111,7 @@ declare module "@stencil/core" {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "my-child-component": LocalJSX.MyChildComponent & JSXBase.HTMLAttributes<HTMLMyChildComponentElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "my-form": LocalJSX.MyForm & JSXBase.HTMLAttributes<HTMLMyFormElement>;
             "my-parent-component": LocalJSX.MyParentComponent & JSXBase.HTMLAttributes<HTMLMyParentComponentElement>;
         }
     }

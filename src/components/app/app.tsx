@@ -9,12 +9,14 @@ export class App {
   render() {
     const user: UserState = {
       first: "Ted",
-      middle: "E",
+      middle: "E.",
       last: "Bear",
     };
+
     const converters: ConvertersState = {
-      userName: (user) => [user.first, user.middle, user.last].join(" "),
+      userName: (first, middle, last) => [first, middle, last].join(" "),
     };
+
     return (
       <UserStateTunnel.Provider state={user}>
         <ConvertersStateTunnel.Provider state={converters}>
