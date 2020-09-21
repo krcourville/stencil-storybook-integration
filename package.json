@@ -26,6 +26,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@abraham/reflection": "^0.7.0",
     "@stencil/core": "^1.17.3",
     "reflect-metadata": "^0.1.13",
     "tsyringe": "^4.3.0"
