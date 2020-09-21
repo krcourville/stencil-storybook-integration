@@ -1,13 +1,21 @@
 import { Component, Prop, h } from "@stencil/core";
-import UserTunnel, { UserState } from "../data/user";
-import ConvertersTunnel, { UserNameFormatter } from "../data/converters";
-
+import { UserState } from "../data/user";
+import { UserNameFormatter } from "../data/converters";
+import {
+  Logger,
+  LoggerInjectionToken,
+  OtherService,
+  UserService,
+} from "../../services";
+import { Inject, injectProps } from "../../dependency-injection";
 @Component({
   tag: "my-component",
   styleUrl: "my-component.css",
   scoped: true,
 })
+// @injectable()
 export class MyComponent implements UserState {
+  // constructor(@inject(LoggerInjectionToken) private logger: Logger) {}
   /**
    * The first name
    */
@@ -25,11 +33,41 @@ export class MyComponent implements UserState {
 
   @Prop() userName: UserNameFormatter;
 
+  @Prop()
+  logger: Logger;
+
+  @Prop()
+  @Inject()
+  userService: UserService;
+
+  @Prop()
+  otherService: OtherService;
+
   render() {
-    const formattedUserName = this.userName(this.first, this.middle, this.last);
-    return <div>The provided name was: {formattedUserName}</div>;
+    this.logger?.log(`BEGIN: RENDER`);
+    this.logger?.log(`IsAuthenticated? ${this.userService?.isAuthenticated}`);
+    this.logger?.log(`value: ${this.otherService?.getValue()}`);
+    return (
+      <div>
+        <pre>
+          {JSON.stringify(
+            {
+              first: this.first,
+              middle: this.middle,
+              last: this.last,
+              logger: this.logger,
+            },
+            null,
+            "  "
+          )}
+        </pre>
+      </div>
+    );
   }
 }
 
-UserTunnel.injectProps(MyComponent, ["first", "middle", "last"]);
-ConvertersTunnel.injectProps(MyComponent, ["userName"]);
+injectProps(MyComponent, {
+  logger: LoggerInjectionToken,
+  // userService: UserService,
+  otherService: OtherService,
+});

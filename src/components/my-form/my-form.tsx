@@ -28,6 +28,10 @@ export class MyForm {
     };
   };
 
+  onInputFocus = (evt: FocusEvent) => {
+    console.log("FOCUS", evt);
+  };
+
   render() {
     return (
       <Host>
@@ -35,7 +39,11 @@ export class MyForm {
           <div>
             <label>
               <span>Name</span>
-              <input name="name" onInput={this.onInputChange} />
+              <input
+                name="name"
+                onInput={this.onInputChange}
+                onFocus={this.onInputFocus}
+              />
             </label>
           </div>
           <div>

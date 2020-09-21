@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { UserNameFormatter } from "./components/data/converters";
+import { Logger, OtherService, UserService } from "./services";
 export namespace Components {
     interface AppRoot {
     }
@@ -21,11 +22,14 @@ export namespace Components {
           * The last name
          */
         "last": string;
+        "logger": Logger;
         /**
           * The middle name
          */
         "middle": string;
+        "otherService": OtherService;
         "userName": UserNameFormatter;
+        "userService": UserService;
     }
     interface MyForm {
     }
@@ -86,11 +90,14 @@ declare namespace LocalJSX {
           * The last name
          */
         "last"?: string;
+        "logger"?: Logger;
         /**
           * The middle name
          */
         "middle"?: string;
+        "otherService"?: OtherService;
         "userName"?: UserNameFormatter;
+        "userService"?: UserService;
     }
     interface MyForm {
     }

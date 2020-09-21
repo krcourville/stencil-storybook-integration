@@ -15,7 +15,6 @@
 ```mermaid
 graph TD;
   my-parent-component --> my-component
-  my-component --> context-consumer
   style my-parent-component fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
